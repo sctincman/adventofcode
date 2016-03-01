@@ -12,9 +12,10 @@
 
 (call-with-input-file "day02.txt"
   (lambda (in)
-    (apply + (map (lambda (line)
-		    (find-area (parse-triple line)))
-		  (port->list read-line in)))))
+    (foldl (lambda (line sum)
+	     (+ sum (find-area (parse-triple line))))
+	   0
+	   (port->list read-line in))))
 
 ; Part 2
 (define (find-length triple)
@@ -23,6 +24,7 @@
 
 (call-with-input-file "day02.txt"
   (lambda (in)
-    (apply + (map (lambda (line)
-		    (find-length (parse-triple line)))
-		  (port->list read-line in)))))
+    (foldl (lambda (line sum)
+	     (+ sum (find-length (parse-triple line))))
+	   0
+	   (port->list read-line in))))
