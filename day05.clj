@@ -1,5 +1,3 @@
-(require '[clojure.string :as str])
-
 (defn is-nice? [string]
   (and (>= (count (re-seq #"[aeiou]" string))
            3)
